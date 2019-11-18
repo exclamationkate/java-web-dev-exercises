@@ -49,4 +49,33 @@ public class CountingCharacters {
         }
     }
 
+    /* Dave's solution
+
+    public static void main(String[] args) throws Exception {
+        // Make a string variable to use
+        String text = "If the product of two terms is zero then common sense says at least one of the two terms has to be zero to start with. So if you move all the terms over to one side, you can put the quadratics into a form that can be factored allowing that side of the equation to equal zero. Once you’ve done that, it’s pretty straightforward from there.";
+
+        // Make our HashMap
+        HashMap<Character, Integer> counts = new HashMap<>();
+
+        char[] charactersInString = text.toCharArray();
+
+        // For each character in the string
+        for (char c : charactersInString) {
+            // If I have seen this character before
+            if (counts.containsKey(c)) {
+                // Add 1 to the count
+                int newCount = counts.get(c)+1;
+                counts.put(c, newCount); // If you put a key that already exists, it overwrites the previous key with the new value
+            } else { // If I haven't seen this character
+                // Add character as key and set value to 1
+                counts.put(c, 1);
+            }
+        }
+        // Print out the HashMap
+        for (char c : counts.keySet()) {
+            System.out.println(c + ": " + counts.get(c));
+        }
+    }
+     */
 }
