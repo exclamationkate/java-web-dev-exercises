@@ -25,29 +25,7 @@ public class Student {
         this(name, studentId, 0, 0);
     }
 
-    public void addGrade(int courseCredits, double grade) {
-        double currentQualityScore = gpa * numberOfCredits;
-        double addToCurrent = grade * courseCredits;
-        double totalQualityScore = currentQualityScore + addToCurrent;
-
-        numberOfCredits += courseCredits;
-        gpa = totalQualityScore / numberOfCredits;
-    }
-
-    public String getGradeLevel() {
-        String gradeLevel;
-        if (numberOfCredits >= 90) {
-            gradeLevel = "Senior";
-        } else if (numberOfCredits >= 60) {
-            gradeLevel = "Junior";
-        } else if (numberOfCredits >= 30) {
-            gradeLevel = "Sophomore";
-        } else {
-            gradeLevel = "Freshman";
-        }
-        return gradeLevel;
-    }
-
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -78,6 +56,29 @@ public class Student {
 
     public void setGpa(double aGpa) {
         gpa = aGpa;
+    }
+
+    // Instance Methods
+    public void addGrade(int courseCredits, double grade) {
+        double currentQualityScore = gpa * numberOfCredits;
+        double totalQualityScore = currentQualityScore + (grade * courseCredits);
+
+        numberOfCredits += courseCredits;
+        gpa = totalQualityScore / numberOfCredits;
+    }
+
+    public String getGradeLevel() {
+        String gradeLevel;
+        if (this.numberOfCredits >= 90) {
+            gradeLevel = "Senior";
+        } else if (this.numberOfCredits >= 60) {
+            gradeLevel = "Junior";
+        } else if (this.numberOfCredits >= 30) {
+            gradeLevel = "Sophomore";
+        } else {
+            gradeLevel = "Freshman";
+        }
+        return gradeLevel;
     }
 
     @Override

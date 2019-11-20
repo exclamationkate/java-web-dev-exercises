@@ -18,6 +18,10 @@ public class Car {
         this.milesPerGallon = milesPerGallon;
     }
 
+    public void addGas(double gas) {
+        this.setGasTankLevel(this.getGasTankLevel() + gas);
+    }
+
     public String getMake() {
         return make;
     }
@@ -46,7 +50,16 @@ public class Car {
         return gasTankLevel;
     }
 
+    // The original method was refactored to throw an error if too much gas is added to the tank
+
+//    public void setGasTankLevel(double gasTankLevel) {
+//        this.gasTankLevel = gasTankLevel;
+//    }
+
     public void setGasTankLevel(double gasTankLevel) {
+        if (gasTankLevel > this.getGasTankSize()) {
+            throw new IllegalArgumentException("Can't exceed tank size");
+        }
         this.gasTankLevel = gasTankLevel;
     }
 
