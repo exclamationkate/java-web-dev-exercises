@@ -5,7 +5,7 @@ import java.util.Objects;
 public class BankAccount {
 
     // To determine if variable should be included in class, say "BankAccount has a (insert variable name)"
-    private double balance;
+    protected double balance; // This is protected because Class CheckingAccount accesses and changes it
     private int accountNo;
     private static int nextAccountNumber = 1;
 
