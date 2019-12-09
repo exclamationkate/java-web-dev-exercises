@@ -33,11 +33,11 @@ public class BankAccount {
     }
 
     public boolean depositFunds(double depositAmount) {
-        if (depositAmount > 0) {
-            this.balance += depositAmount;
-            return true;
+        if (depositAmount <= 0) {
+            throw new IllegalArgumentException();
         }
-        return false;
+        this.balance += depositAmount;
+        return true;
     }
 
     // Overrides
@@ -70,9 +70,18 @@ public class BankAccount {
         BankAccount newAccount = new BankAccount(1000);
         BankAccount duplicateAccount = newAccount; // Both variables point to the exact same object.
 
-        System.out.println(newAccount);
-        newAccount.withdrawFunds(50);
-        System.out.println(newAccount.getBalance());
-        System.out.println(duplicateAccount.getBalance());
+//        System.out.println(newAccount);
+//        newAccount.withdrawFunds(50);
+//        System.out.println(newAccount.getBalance());
+//        System.out.println(duplicateAccount.getBalance());
+
+        // Exceptions are used for unexpected situations. They're not for users, they're for us.
+        try {
+            newAccount.depositFunds(-30); // perform code that might throw an error
+        } catch (IllegalArgumentException e){ // if error is thrown, code in catch {} is executed
+            e.printStackTrace(); // shows red error text information
+            System.out.println("In catch");
+            newAccount.depositFunds(30);
+        }
     }
 }
